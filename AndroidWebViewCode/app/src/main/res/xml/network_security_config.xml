@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- اجازه همه ترافیک‌های غیر رمزنگاری شده (HTTP) برای همه دامنه‌ها -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>
+

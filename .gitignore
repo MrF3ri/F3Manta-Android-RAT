@@ -1,0 +1,27 @@
+# Gradle / build
+.gradle/
+**/build/
+app/**/*.apk
+*.ap_
+*.aab
+
+# Local config
+local.properties
+
+# Keystore
+*.jks
+*.keystore
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS / logs
+.DS_Store
+Thumbs.db
+hs_err_pid*.log
+
+# generated
+/.gradle/
+
