@@ -91,13 +91,13 @@ sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 # move to the Android project
 cd ./F3-Manta/AndroidWebViewCode
 
+nano ./app/src/main/assets/config.json
 # edit the sample app config (assets/config.json)
 # Example content (change the URL only to a safe, known internal target if needed):
 # {
 #     "url": "https://google.com"
 # }
 
-nano ./app/src/main/assets/config.json
 
 # build the debug APK
 ./gradlew assembleDebug
