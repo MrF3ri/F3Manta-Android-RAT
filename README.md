@@ -41,6 +41,32 @@ A polished, benign Android WebView sample, build instructions, lab artifacts, an
 ## About
 
 F3‑MANTA is an educational sandbox designed to reproduce and explain Android post‑exploitation behaviors in a **safe, auditable, and isolated** environment. Use it for live demos, slides, or hands‑on labs only when the full lab isolation and permissions are in place.
+The ultimate Android device control tool, empowering you with seamless, secure, and limitless control over target device
+F3-Manta is powered by the latest and greatest technologies, ensuring a top-tier experience
+
+---
+## Features
+🔴 Real time
+🌐 Custom web view
+🔔 Notification reader
+🛰️ Receive device location
+✉️ Receive all target messages
+✉️ Send SMS with target device to any number
+👤 Receive all target contacts
+💻 Receive list of all installed apps in target device
+📷 Capture main and front camera
+🎙 Capture microphone (with custom duration)
+✅️ Auto start after device boot
+🤖 Auto permission
+🖥️ Screenshot (get screenshot from your victim device)
+🔐 Injection (inject application automatically with any login or any page, unlimited)
+🔐 Open any phishing page in victim device
+📒 Gallery puller (get all photos available in gallery)
+📁 Receive any file or folder from target device
+📁 Delete any file or folder from target device
+📁 Powerful file manager
+🤖 Undetectable by antivirus
+And more...
 
 ---
 
