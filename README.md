@@ -1,4 +1,4 @@
-# F3‑MANTA — Mobile Attack & Network Testing Arena (Educational Sandbox)
+# F3‑MANTA — Mobile Attack & Network Testing Arena (Android RAT)
 
 **Author:** mr f3ri • **GitHub:** `httpsmrferi` • **Telegram:** `@sudoferi`
 
