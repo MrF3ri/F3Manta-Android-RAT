@@ -23,6 +23,7 @@ A polished, benign Android WebView sample, build instructions, lab artifacts, an
   - [TL;DR](#tldr)
   - [Table of Contents](#table-of-contents)
   - [About](#about)
+  - [Features](#features)
   - [Disclaimer \& Ethics](#disclaimer--ethics)
   - [Prerequisites (exact commands)](#prerequisites-exact-commands)
   - [Build the example APK (exact commands)](#build-the-example-apk-exact-commands)
@@ -46,27 +47,28 @@ F3-Manta is powered by the latest and greatest technologies, ensuring a top-tier
 
 ---
 ## Features
-🔴 Real time
-🌐 Custom web view
-🔔 Notification reader
-🛰️ Receive device location
-✉️ Receive all target messages
-✉️ Send SMS with target device to any number
-👤 Receive all target contacts
-💻 Receive list of all installed apps in target device
-📷 Capture main and front camera
-🎙 Capture microphone (with custom duration)
-✅️ Auto start after device boot
-🤖 Auto permission
-🖥️ Screenshot (get screenshot from your victim device)
-🔐 Injection (inject application automatically with any login or any page, unlimited)
-🔐 Open any phishing page in victim device
-📒 Gallery puller (get all photos available in gallery)
-📁 Receive any file or folder from target device
+
+- 🔴 Real time
+- 🌐 Custom web view
+- 🔔 Notification reader
+- 🛰️ Receive device location
+- ✉️ Receive all target messages
+- ✉️ Send SMS with target device to any number
+- 👤 Receive all target contacts
+- 💻 Receive list of all installed apps in target device
+- 📷 Capture main and front camera
+- 🎙 Capture microphone (with custom duration)
+- ✅️ Auto start after device boot
+- 🤖 Auto permission
+- 🖥️ Screenshot (get screenshot from your victim device)
+- 🔐 Injection (inject application automatically with any login or any page, unlimited)
+- 🔐 Open any phishing page in victim device
+- 📒 Gallery puller (get all photos available in gallery)
+- 📁 Receive any file or folder from target device
 📁 Delete any file or folder from target device
-📁 Powerful file manager
-🤖 Undetectable by antivirus
-And more...
+- 📁 Powerful file manager
+- 🤖 Undetectable by antivirus
+- And more...
 
 ---
 
